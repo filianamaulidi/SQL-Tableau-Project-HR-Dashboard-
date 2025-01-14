@@ -1,19 +1,20 @@
-# HR Employee Distribution Dashboard
+# SQL & Tableau: HR Employee Distribution Dashboard
 Tableau project preview: 
 ![HR (1)](https://github.com/user-attachments/assets/58a1669f-65eb-457f-88f6-a9290f8852ae)
 ![HR (2)](https://github.com/user-attachments/assets/b564334d-27cb-4e13-9686-1bab0b65598e)
 or you can access the tableau project [here](https://public.tableau.com/shared/RSJ9NDGX4?:display_count=n&:origin=viz_share_link).
 ## Project Overview
-This project was conducted to see the distribution of employees based on gender, race, origin, and other categories. The analysis results are used so that Human Resources can make the right conclusions regarding the development of employee conditions. There are +22200 data from 2000-2020 in the table with different data types. The following is a summary the data and other tools that is used in this project.
+This project was conducted to see the distribution of employees based on gender, race, origin, and other categories. The analysis results are used so that Human Resources can make the right conclusions regarding the development of employee conditions. For further overview, **conclusions and recommendations** will also be provided in the last section.
+
+There are +22200 data from 2000-2020 in the table with different data types. The following is a summary of the data and other tools that is used in this project.
 + **Data:** 22214 of HR data from the year 2000 to 2020. 
 + **Data Cleaning and Analysis:** MySQL Workbench
 + **Data Visualization:** Tableau
   
 ## Objectives
-+ **Set Up Human Resources Database**: Create and populate a retail sales database with the provided sales data.
-+ **Data Cleaning:** Identify and remove any records with missing or null values.
++ **Set Up Human Resources Database**: Create and populate a human resources database with the provided data.
 + **Exploratory Data Analysis (EDA):** Perform basic exploratory data analysis to understand the dataset.
-+ **Data Analysis:** Use SQL to answer specific business questions and derive insights from the sales data.
++ **Data Analysis:** Use SQL to answer specific questions and derive insights from the HR data.
 
 ## Get ready for the analysis!
 ### 1. Database Setup
@@ -21,7 +22,7 @@ This project was conducted to see the distribution of employees based on gender,
 ``` js
 CREATE DATABASE humanresources;
 ```
-+ **Table Creation:** Table named hr is created which is then will be used to save the values from csv file. 
++ **Table Creation:** Table named 'hr' is created which is then will be used to save the values from csv file. 
 ``` js
 CREATE TABLE hr (
     id VARCHAR(15),
@@ -53,7 +54,7 @@ drop table hr;
 
 SET sql_safe_updates = 0;
 ```
-+ **Modify table:** I modified the table, including making changes to column names, changing column data types, adding new columns and more. Here is a query to modify the data table.
++ **Modify/Alter table:** I modified the table, including making changes to column names, changing column data types, adding new columns and more. Here is a query to modify the data table.
 ``` js
 -- 1. Modify column name
 alter table hr change column location_sate location_state varchar(50);
@@ -254,3 +255,26 @@ WHERE
     termdate <= CURDATE() AND termdate <> '0000-00-00' AND age >= 18
 GROUP BY department;
 ```
+
+## Conclusion
+1. There are more male employees
+2. White race is the most dominant while Native Hawaiian and American Indian are the least dominant.
+3. The youngest employee is 20 years old and the oldest is 57 years old
+4. 5 age groups were created (18-24, 25-34, 35-44, 45-54, 55-64). A large number of employees were between 25-34 followed by 35-44 while the smallest group was 55-64.
+5. A large number of employees work at the headquarters versus remotely.
+6. The average length of employment for terminated employees is around 7 years.
+7. The gender distribution across departments is fairly balanced but there are generally more male than female employees.
+8. The Marketing department has the highest turnover rate followed by Training. The least turn over rate are in the Research and development, Support and Legal departments.
+9. A large number of employees come from the state of Ohio.
+10. The net change in employees has increased over the years.
+11. The average tenure for each department is about 8 years with Legal and Auditing having the highest and Services, Sales and Marketing having the lowest.
+
+## Recommendation
+1. **Enhance Employee Retention:** Implement programs to extend the average tenure by focusing on career development and employee satisfaction. Aso, do some analyze exit interviews for trends and address common reasons for turnover, particularly in the Marketing and Training departments.
+2. **Reduce Turnover in High-Turnover Departments:** Invest in employee engagement and satisfaction strategies for the Marketing and Training departments.
+3. **Optimize Workforce Distribution:** Regularly assess the balance between headquarters and remote workers to adapt to evolving business needs and employee preferences.
+4. **Foster Long-Term Employment:** Recognize and reward long-term employees in departments with lower turnover rates to set a benchmark for others. The other way is to align retention strategies with departments showing high average tenure, like Legal and Auditing.
+5. **Monitor Growth Trends:** Maintain the positive net employee growth trend by focusing on workforce planning and proactive recruitment.
+6. **Age Group Engagement:** Focus on retaining younger employees through career growth opportunities and competitive benefits.
+7. **Promote Racial Diversity:** Provide bias training for recruiters and managers to ensure fair hiring practices.
+8. **Address Gender Imbalance:** Create targeted hiring initiatives to balance gender representation across departments.
